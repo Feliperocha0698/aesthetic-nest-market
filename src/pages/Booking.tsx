@@ -139,7 +139,9 @@ const Booking = () => {
     }
     setErrors({});
     setLoading(true);
+    const newId = crypto.randomUUID();
     const { error } = await supabase.from("booking_requests").insert({
+      id: newId,
       name: form.name.trim(),
       email: form.email.trim(),
       phone: form.phone.trim(),
@@ -161,9 +163,20 @@ const Booking = () => {
       toast.error(t("booking.errorTitle"), { description: t("booking.errorText") });
       return;
     }
+    sessionStorage.setItem(STORAGE_KEY, JSON.stringify({ bookingId: newId, form }));
     setSubmitted(form);
+    setBookingId(newId);
+    setPhase("pay");
     setForm(initialState);
   };
+
+  const resetAll = () => {
+    sessionStorage.removeItem(STORAGE_KEY);
+    setSubmitted(null);
+    setBookingId(null);
+    setPhase("form");
+  };
+
 
   return (
     <Layout>
