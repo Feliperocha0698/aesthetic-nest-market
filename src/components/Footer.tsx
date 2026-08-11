@@ -1,187 +1,117 @@
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
-import { collections } from "@/data/products";
+import { Mail, MessageCircle, MapPin, Clock } from "lucide-react";
+import { useLanguage } from "@/i18n/LanguageProvider";
+import {
+  CONTACT_EMAIL,
+  SERVICE_AREA,
+  WHATSAPP_DISPLAY,
+  services,
+  whatsappLink,
+} from "@/data/site";
 
 export const Footer = () => {
+  const { t } = useLanguage();
+
   return (
-    <footer className="bg-foreground text-background">
-      {/* Top bar */}
-      <div className="border-b border-background/10">
-        <div className="container-full py-12 md:py-16">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
-            <div>
-              <Link
-                to="/"
-                className="font-serif text-3xl md:text-4xl tracking-tight text-background"
-              >
-                Maison
-              </Link>
-              <p className="mt-3 text-sm text-background/50 leading-relaxed max-w-xs">
-                Curated home objects and lifestyle pieces for considered living.
-              </p>
-            </div>
-
-            {/* Newsletter in footer */}
-            <div className="max-w-sm w-full">
-              <p className="text-[10px] font-semibold tracking-[0.3em] uppercase text-background/40 mb-3">
-                Stay Connected
-              </p>
-              <form className="flex gap-0">
-                <input
-                  type="email"
-                  placeholder="Your email"
-                  className="flex-1 h-12 px-4 text-sm bg-background/5 border border-background/15 text-background placeholder:text-background/30 focus:outline-none focus:border-background/40 transition-colors"
-                />
-                <button
-                  type="submit"
-                  className="h-12 px-5 text-sm font-medium bg-background text-foreground hover:bg-background/90 transition-colors"
-                >
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Main footer content */}
-      <div className="container-full py-12 md:py-16">
+    <footer className="bg-petrol-dark text-ice">
+      <div className="container-full py-14 md:py-20">
         <div className="grid gap-10 md:grid-cols-4">
-          {/* Collections */}
+          <div className="md:col-span-1">
+            <p className="font-serif text-2xl font-bold">
+              BPC <span className="text-gold">Recreativo</span>
+            </p>
+            <p className="mt-4 text-sm leading-relaxed text-ice/60 max-w-xs">
+              {t("footer.tagline")}
+            </p>
+          </div>
+
           <div>
-            <h4 className="text-[11px] font-semibold tracking-[0.25em] uppercase text-background/40 mb-5">
-              Collections
+            <h4 className="text-[11px] font-semibold tracking-[0.25em] uppercase text-gold mb-5">
+              {t("footer.navTitle")}
             </h4>
             <ul className="space-y-3">
-              {collections.slice(0, 6).map((collection) => (
-                <li key={collection.id}>
+              {[
+                { to: "/", key: "nav.home" },
+                { to: "/servicos", key: "nav.services" },
+                { to: "/galeria", key: "nav.gallery" },
+                { to: "/sobre", key: "nav.about" },
+                { to: "/reservas", key: "nav.booking" },
+                { to: "/contato", key: "nav.contact" },
+              ].map((l) => (
+                <li key={l.to}>
                   <Link
-                    to={`/products?collection=${collection.slug}`}
-                    className="text-sm text-background/60 hover:text-background transition-colors duration-300"
+                    to={l.to}
+                    className="text-sm text-ice/60 hover:text-ice transition-colors duration-300"
                   >
-                    {collection.name}
+                    {t(l.key)}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Explore */}
           <div>
-            <h4 className="text-[11px] font-semibold tracking-[0.25em] uppercase text-background/40 mb-5">
-              Explore
+            <h4 className="text-[11px] font-semibold tracking-[0.25em] uppercase text-gold mb-5">
+              {t("footer.servicesTitle")}
             </h4>
             <ul className="space-y-3">
-              <li>
-                <Link
-                  to="/products"
-                  className="text-sm text-background/60 hover:text-background transition-colors duration-300"
-                >
-                  Shop All
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/about"
-                  className="text-sm text-background/60 hover:text-background transition-colors duration-300"
-                >
-                  Our Story
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/cart"
-                  className="text-sm text-background/60 hover:text-background transition-colors duration-300"
-                >
-                  Shopping Bag
-                </Link>
-              </li>
+              {services.map((s) => (
+                <li key={s.id}>
+                  <Link
+                    to="/servicos"
+                    className="text-sm text-ice/60 hover:text-ice transition-colors duration-300"
+                  >
+                    {t(`services.${s.id}.name`)}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Support */}
           <div>
-            <h4 className="text-[11px] font-semibold tracking-[0.25em] uppercase text-background/40 mb-5">
-              Support
+            <h4 className="text-[11px] font-semibold tracking-[0.25em] uppercase text-gold mb-5">
+              {t("footer.contactTitle")}
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-3 text-sm text-ice/60">
               <li>
                 <a
-                  href="#"
-                  className="text-sm text-background/60 hover:text-background transition-colors duration-300"
+                  href={whatsappLink()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 hover:text-ice transition-colors"
                 >
-                  Shipping & Returns
+                  <MessageCircle className="w-4 h-4 text-gold" />
+                  {WHATSAPP_DISPLAY}
                 </a>
               </li>
               <li>
                 <a
-                  href="#"
-                  className="text-sm text-background/60 hover:text-background transition-colors duration-300"
+                  href={`mailto:${CONTACT_EMAIL}`}
+                  className="flex items-center gap-2 hover:text-ice transition-colors"
                 >
-                  Care Guide
+                  <Mail className="w-4 h-4 text-gold" />
+                  {CONTACT_EMAIL}
                 </a>
               </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-sm text-background/60 hover:text-background transition-colors duration-300"
-                >
-                  FAQ
-                </a>
+              <li className="flex items-center gap-2">
+                <Clock className="w-4 h-4 text-gold" />
+                {t("contact.hoursValue")}
               </li>
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h4 className="text-[11px] font-semibold tracking-[0.25em] uppercase text-background/40 mb-5">
-              Contact
-            </h4>
-            <ul className="space-y-3">
-              <li>
-                <a
-                  href="mailto:hello@maison.com"
-                  className="text-sm text-background/60 hover:text-background transition-colors duration-300"
-                >
-                  hello@maison.com
-                </a>
-              </li>
-              <li>
-                <p className="text-sm text-background/40 leading-relaxed">
-                  Mon–Fri, 9am–6pm CET
-                </p>
+              <li className="flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-gold" />
+                {SERVICE_AREA}
               </li>
             </ul>
           </div>
         </div>
       </div>
 
-      {/* Bottom bar */}
-      <div className="border-t border-background/10">
-        <div className="container-full py-6 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-background/30">
-            © {new Date().getFullYear()} Maison. All rights reserved.
+      <div className="border-t border-ice/10">
+        <div className="container-full py-6 flex flex-col md:flex-row items-center justify-between gap-3">
+          <p className="text-xs text-ice/40">
+            © {new Date().getFullYear()} BPC Recreativo. {t("footer.rights")}
           </p>
-          <div className="flex gap-8">
-            <a
-              href="#"
-              className="text-xs text-background/30 hover:text-background/60 transition-colors duration-300"
-            >
-              Privacy Policy
-            </a>
-            <a
-              href="#"
-              className="text-xs text-background/30 hover:text-background/60 transition-colors duration-300"
-            >
-              Terms of Service
-            </a>
-            <a
-              href="#"
-              className="text-xs text-background/30 hover:text-background/60 transition-colors duration-300"
-            >
-              Cookie Policy
-            </a>
-          </div>
+          <p className="text-xs text-ice/40">{SERVICE_AREA}</p>
         </div>
       </div>
     </footer>
