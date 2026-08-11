@@ -47,9 +47,13 @@ Fotos de banco de imagens (Unsplash) para hero, serviços e galeria, escolhidas 
 - E-mails via Lovable Emails — requer configurar um domínio próprio para envio (ex.: `notify.seudominio.com.br`); até lá o restante funciona normalmente.
 - SEO: título e meta description próprios, H1 único por página, alt em imagens, JSON-LD de negócio local.
 
+## Contato
+
+- WhatsApp de reservas: **+55 71 91269417** (usado no botão flutuante, na página de Contato e nos links de resumo da reserva).
+
 ## Pendências suas
 
-- Número de WhatsApp e e-mail de reservas (não vieram na resposta anterior).
+- E-mail de reservas (para receber as solicitações e enviar confirmações).
 - Logo em arquivo (SVG/PNG) — enquanto isso uso o nome em Playfair Display como marca provisória.
 - Domínio para envio de e-mails.
 
