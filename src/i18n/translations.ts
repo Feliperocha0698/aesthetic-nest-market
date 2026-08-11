@@ -374,11 +374,24 @@ export const translations = {
       newRequest: "Make another request",
       errorTitle: "Could not send",
       errorText: "Please try again or contact us on WhatsApp.",
+      payTitle: "Confirm with a R$ 100 deposit",
+      payText:
+        "Pay the R$ 100 booking deposit to secure your date. The remaining balance is agreed with our team after we confirm the route.",
+      payLoading: "Loading secure payment...",
+      payError: "We could not start the payment. Please try again.",
+      paidTitle: "Booking confirmed!",
+      paidText:
+        "Your deposit was received and your booking is confirmed. Send the summary on WhatsApp so our team can finalise the details with you.",
+      pendingTitle: "Payment being processed",
+      pendingText:
+        "We are still confirming your payment. As soon as it clears, your booking is confirmed.",
+      cancelPay: "Pay later",
+      depositBadge: "Deposit R$ 100",
       steps: {
         title: "How it works",
         one: "You send your trip details through this form.",
-        two: "Our team reviews the route and replies with the price.",
-        three: "You confirm payment and receive confirmation by email and WhatsApp.",
+        two: "You pay the R$ 100 deposit online to secure the date.",
+        three: "You receive the confirmation on WhatsApp and by email.",
       },
     },
     contact: {
