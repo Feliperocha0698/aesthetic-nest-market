@@ -203,7 +203,8 @@
   }
 
   .image-reveal img {
-    @apply transition-transform duration-[1.2s] ease-out;
+    @apply transition-transform ease-out;
+    transition-duration: 1.2s;
   }
 
   .image-reveal:hover img {
