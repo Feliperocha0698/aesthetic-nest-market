@@ -159,7 +159,7 @@ export const translations = {
         "O valor total é calculado sob consulta. Para garantir a data, cobramos um sinal de R$ 100,00 pago on-line; o restante é combinado com a nossa equipe.",
       successTitle: "Solicitação enviada!",
       successText:
-        "Recebemos os dados da sua viagem. Recebemos os dados — falta apenas o sinal para confirmar.",
+        "Recebemos os dados da sua viagem. Falta apenas o sinal para confirmar a reserva.",
       summaryTitle: "Resumo da solicitação",
       sendWhatsApp: "Enviar resumo no WhatsApp",
       newRequest: "Fazer nova solicitação",
