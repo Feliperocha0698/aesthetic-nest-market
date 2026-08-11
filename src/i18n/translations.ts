@@ -156,20 +156,33 @@ export const translations = {
       notesPlaceholder: "Voo, cadeirinha, paradas, necessidades especiais...",
       submit: "Enviar solicitação",
       priceNote:
-        "Os valores são calculados sob consulta, de acordo com trajeto, data e número de passageiros.",
+        "O valor total é calculado sob consulta. Para garantir a data, cobramos um sinal de R$ 100,00 pago on-line; o restante é combinado com a nossa equipe.",
       successTitle: "Solicitação enviada!",
       successText:
-        "Recebemos os dados da sua viagem. Nossa equipe entra em contato em breve com o orçamento.",
+        "Recebemos os dados da sua viagem. Falta apenas o sinal para confirmar a reserva.",
       summaryTitle: "Resumo da solicitação",
       sendWhatsApp: "Enviar resumo no WhatsApp",
       newRequest: "Fazer nova solicitação",
       errorTitle: "Não foi possível enviar",
       errorText: "Tente novamente ou fale conosco pelo WhatsApp.",
+      payTitle: "Confirme com o sinal de R$ 100",
+      payText:
+        "Pague o sinal de R$ 100 para garantir a sua data. O valor restante é combinado com a nossa equipe após a confirmação do trajeto.",
+      payLoading: "Carregando pagamento seguro...",
+      payError: "Não foi possível iniciar o pagamento. Tente novamente.",
+      paidTitle: "Reserva confirmada!",
+      paidText:
+        "Recebemos o seu sinal e a reserva está confirmada. Envie o resumo no WhatsApp para a nossa equipe finalizar os detalhes com você.",
+      pendingTitle: "Pagamento em processamento",
+      pendingText:
+        "Ainda estamos confirmando o seu pagamento. Assim que for aprovado, a reserva é confirmada.",
+      cancelPay: "Pagar depois",
+      depositBadge: "Sinal de R$ 100",
       steps: {
         title: "Como funciona",
         one: "Você envia os detalhes da viagem por este formulário.",
-        two: "Nossa equipe analisa a rota e responde com o valor.",
-        three: "Você confirma o pagamento e recebe a confirmação por e-mail e WhatsApp.",
+        two: "Você paga o sinal de R$ 100 on-line para garantir a data.",
+        three: "Você recebe a confirmação no WhatsApp e por e-mail.",
       },
     },
     contact: {
@@ -374,11 +387,24 @@ export const translations = {
       newRequest: "Make another request",
       errorTitle: "Could not send",
       errorText: "Please try again or contact us on WhatsApp.",
+      payTitle: "Confirm with a R$ 100 deposit",
+      payText:
+        "Pay the R$ 100 booking deposit to secure your date. The remaining balance is agreed with our team after we confirm the route.",
+      payLoading: "Loading secure payment...",
+      payError: "We could not start the payment. Please try again.",
+      paidTitle: "Booking confirmed!",
+      paidText:
+        "Your deposit was received and your booking is confirmed. Send the summary on WhatsApp so our team can finalise the details with you.",
+      pendingTitle: "Payment being processed",
+      pendingText:
+        "We are still confirming your payment. As soon as it clears, your booking is confirmed.",
+      cancelPay: "Pay later",
+      depositBadge: "Deposit R$ 100",
       steps: {
         title: "How it works",
         one: "You send your trip details through this form.",
-        two: "Our team reviews the route and replies with the price.",
-        three: "You confirm payment and receive confirmation by email and WhatsApp.",
+        two: "You pay the R$ 100 deposit online to secure the date.",
+        three: "You receive the confirmation on WhatsApp and by email.",
       },
     },
     contact: {

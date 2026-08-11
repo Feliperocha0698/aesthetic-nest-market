@@ -1,13 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { z } from "zod";
-import { CheckCircle2, MessageCircle } from "lucide-react";
+import { CheckCircle2, MessageCircle, Clock } from "lucide-react";
 import { Layout } from "@/components/Layout";
 import { Reveal } from "@/components/Reveal";
+import { BookingCheckout } from "@/components/BookingCheckout";
+import { PaymentTestModeBanner } from "@/components/PaymentTestModeBanner";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { services, whatsappLink } from "@/data/site";
 import { supabase } from "@/integrations/supabase/client";
+import { getStripeEnvironment } from "@/lib/stripe";
 import { toast } from "sonner";
+
+const STORAGE_KEY = "bpc_booking_pending";
 
 const inputClass =
   "w-full h-11 rounded-md border border-input bg-background px-3 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring";
@@ -57,6 +62,37 @@ const Booking = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState<FormState | null>(null);
+  const [bookingId, setBookingId] = useState<string | null>(null);
+  const [phase, setPhase] = useState<"form" | "pay" | "paid" | "pending">("form");
+  const [checking, setChecking] = useState(false);
+
+  const sessionId = params.get("session_id");
+
+  useEffect(() => {
+    if (!sessionId) return;
+    const raw = sessionStorage.getItem(STORAGE_KEY);
+    if (!raw) return;
+    const stored = JSON.parse(raw) as { bookingId: string; form: FormState };
+    setSubmitted(stored.form);
+    setBookingId(stored.bookingId);
+    setChecking(true);
+    supabase.functions
+      .invoke("booking-status", {
+        body: {
+          bookingId: stored.bookingId,
+          sessionId,
+          environment: getStripeEnvironment(),
+        },
+      })
+      .then(({ data }) => {
+        const paid = Boolean(data?.paid);
+        setPhase(paid ? "paid" : "pending");
+        if (paid) sessionStorage.removeItem(STORAGE_KEY);
+      })
+      .catch(() => setPhase("pending"))
+      .finally(() => setChecking(false));
+  }, [sessionId]);
+
 
   const schema = z.object({
     name: z.string().trim().min(3, t("validation.name")).max(120),
@@ -103,7 +139,9 @@ const Booking = () => {
     }
     setErrors({});
     setLoading(true);
+    const newId = crypto.randomUUID();
     const { error } = await supabase.from("booking_requests").insert({
+      id: newId,
       name: form.name.trim(),
       email: form.email.trim(),
       phone: form.phone.trim(),
@@ -125,9 +163,20 @@ const Booking = () => {
       toast.error(t("booking.errorTitle"), { description: t("booking.errorText") });
       return;
     }
+    sessionStorage.setItem(STORAGE_KEY, JSON.stringify({ bookingId: newId, form }));
     setSubmitted(form);
+    setBookingId(newId);
+    setPhase("pay");
     setForm(initialState);
   };
+
+  const resetAll = () => {
+    sessionStorage.removeItem(STORAGE_KEY);
+    setSubmitted(null);
+    setBookingId(null);
+    setPhase("form");
+  };
+
 
   return (
     <Layout>
@@ -139,13 +188,51 @@ const Booking = () => {
         </div>
       </section>
 
+      <PaymentTestModeBanner />
+
       <section className="section">
         <div className="container-full grid gap-12 lg:grid-cols-[1.6fr_1fr] items-start">
-          {submitted ? (
+          {submitted && phase === "pay" && bookingId ? (
+            <Reveal className="bg-card border border-border rounded-lg p-6 md:p-10">
+              <span className="inline-flex items-center rounded-full bg-secondary/20 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-primary">
+                {t("booking.depositBadge")}
+              </span>
+              <h2 className="mt-4 font-serif text-3xl text-primary">{t("booking.payTitle")}</h2>
+              <p className="mt-3 text-muted-foreground leading-relaxed">{t("booking.payText")}</p>
+              <pre className="mt-6 whitespace-pre-wrap rounded-md bg-muted p-5 text-sm text-foreground/80 font-sans">
+                {summary(submitted)}
+              </pre>
+              <div className="mt-8">
+                <BookingCheckout
+                  bookingId={bookingId}
+                  email={submitted.email}
+                  returnUrl={`${window.location.origin}/reservas?session_id={CHECKOUT_SESSION_ID}`}
+                />
+              </div>
+              <button
+                onClick={resetAll}
+                className="mt-6 inline-flex items-center h-11 px-6 rounded-md border border-border text-sm font-semibold uppercase tracking-wide text-primary hover:bg-muted transition-colors"
+              >
+                {t("booking.cancelPay")}
+              </button>
+            </Reveal>
+          ) : submitted && (phase === "paid" || phase === "pending") ? (
             <Reveal className="bg-card border border-border rounded-lg p-8 md:p-10">
-              <CheckCircle2 className="w-10 h-10 text-secondary" />
-              <h2 className="mt-4 font-serif text-3xl text-primary">{t("booking.successTitle")}</h2>
-              <p className="mt-3 text-muted-foreground leading-relaxed">{t("booking.successText")}</p>
+              {phase === "paid" ? (
+                <CheckCircle2 className="w-10 h-10 text-secondary" />
+              ) : (
+                <Clock className="w-10 h-10 text-secondary" />
+              )}
+              <h2 className="mt-4 font-serif text-3xl text-primary">
+                {checking
+                  ? t("common.sending")
+                  : phase === "paid"
+                    ? t("booking.paidTitle")
+                    : t("booking.pendingTitle")}
+              </h2>
+              <p className="mt-3 text-muted-foreground leading-relaxed">
+                {phase === "paid" ? t("booking.paidText") : t("booking.pendingText")}
+              </p>
               <pre className="mt-6 whitespace-pre-wrap rounded-md bg-muted p-5 text-sm text-foreground/80 font-sans">
                 {summary(submitted)}
               </pre>
@@ -160,7 +247,7 @@ const Booking = () => {
                   {t("booking.sendWhatsApp")}
                 </a>
                 <button
-                  onClick={() => setSubmitted(null)}
+                  onClick={resetAll}
                   className="inline-flex items-center h-12 px-7 rounded-md border border-border text-sm font-semibold uppercase tracking-wide text-primary hover:bg-muted transition-colors"
                 >
                   {t("booking.newRequest")}
