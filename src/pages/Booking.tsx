@@ -188,13 +188,51 @@ const Booking = () => {
         </div>
       </section>
 
+      <PaymentTestModeBanner />
+
       <section className="section">
         <div className="container-full grid gap-12 lg:grid-cols-[1.6fr_1fr] items-start">
-          {submitted ? (
+          {submitted && phase === "pay" && bookingId ? (
+            <Reveal className="bg-card border border-border rounded-lg p-6 md:p-10">
+              <span className="inline-flex items-center rounded-full bg-secondary/20 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-primary">
+                {t("booking.depositBadge")}
+              </span>
+              <h2 className="mt-4 font-serif text-3xl text-primary">{t("booking.payTitle")}</h2>
+              <p className="mt-3 text-muted-foreground leading-relaxed">{t("booking.payText")}</p>
+              <pre className="mt-6 whitespace-pre-wrap rounded-md bg-muted p-5 text-sm text-foreground/80 font-sans">
+                {summary(submitted)}
+              </pre>
+              <div className="mt-8">
+                <BookingCheckout
+                  bookingId={bookingId}
+                  email={submitted.email}
+                  returnUrl={`${window.location.origin}/reservas?session_id={CHECKOUT_SESSION_ID}`}
+                />
+              </div>
+              <button
+                onClick={resetAll}
+                className="mt-6 inline-flex items-center h-11 px-6 rounded-md border border-border text-sm font-semibold uppercase tracking-wide text-primary hover:bg-muted transition-colors"
+              >
+                {t("booking.cancelPay")}
+              </button>
+            </Reveal>
+          ) : submitted && (phase === "paid" || phase === "pending") ? (
             <Reveal className="bg-card border border-border rounded-lg p-8 md:p-10">
-              <CheckCircle2 className="w-10 h-10 text-secondary" />
-              <h2 className="mt-4 font-serif text-3xl text-primary">{t("booking.successTitle")}</h2>
-              <p className="mt-3 text-muted-foreground leading-relaxed">{t("booking.successText")}</p>
+              {phase === "paid" ? (
+                <CheckCircle2 className="w-10 h-10 text-secondary" />
+              ) : (
+                <Clock className="w-10 h-10 text-secondary" />
+              )}
+              <h2 className="mt-4 font-serif text-3xl text-primary">
+                {checking
+                  ? t("common.sending")
+                  : phase === "paid"
+                    ? t("booking.paidTitle")
+                    : t("booking.pendingTitle")}
+              </h2>
+              <p className="mt-3 text-muted-foreground leading-relaxed">
+                {phase === "paid" ? t("booking.paidText") : t("booking.pendingText")}
+              </p>
               <pre className="mt-6 whitespace-pre-wrap rounded-md bg-muted p-5 text-sm text-foreground/80 font-sans">
                 {summary(submitted)}
               </pre>
@@ -209,7 +247,7 @@ const Booking = () => {
                   {t("booking.sendWhatsApp")}
                 </a>
                 <button
-                  onClick={() => setSubmitted(null)}
+                  onClick={resetAll}
                   className="inline-flex items-center h-12 px-7 rounded-md border border-border text-sm font-semibold uppercase tracking-wide text-primary hover:bg-muted transition-colors"
                 >
                   {t("booking.newRequest")}
