@@ -14,7 +14,102 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      booking_requests: {
+        Row: {
+          created_at: string
+          destination: string
+          email: string
+          id: string
+          language: string
+          luggage: number
+          name: string
+          notes: string | null
+          origin: string
+          passengers: number
+          phone: string
+          quoted_amount: number | null
+          return_date: string | null
+          return_time: string | null
+          round_trip: boolean
+          service: string
+          status: string
+          trip_date: string
+          trip_time: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          destination: string
+          email: string
+          id?: string
+          language?: string
+          luggage?: number
+          name: string
+          notes?: string | null
+          origin: string
+          passengers?: number
+          phone: string
+          quoted_amount?: number | null
+          return_date?: string | null
+          return_time?: string | null
+          round_trip?: boolean
+          service: string
+          status?: string
+          trip_date: string
+          trip_time: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          destination?: string
+          email?: string
+          id?: string
+          language?: string
+          luggage?: number
+          name?: string
+          notes?: string | null
+          origin?: string
+          passengers?: number
+          phone?: string
+          quoted_amount?: number | null
+          return_date?: string | null
+          return_time?: string | null
+          round_trip?: boolean
+          service?: string
+          status?: string
+          trip_date?: string
+          trip_time?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      contact_messages: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          language: string
+          message: string
+          name: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          language?: string
+          message: string
+          name: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          language?: string
+          message?: string
+          name?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
