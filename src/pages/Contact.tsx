@@ -36,7 +36,12 @@ const Contact = () => {
     }
     setErrors({});
     setLoading(true);
-    const { error } = await supabase.from("contact_messages").insert({ ...parsed.data, language });
+    const { error } = await supabase.from("contact_messages").insert({
+      name: parsed.data.name,
+      email: parsed.data.email,
+      message: parsed.data.message,
+      language,
+    });
     setLoading(false);
     if (error) {
       toast.error(t("booking.errorTitle"), { description: t("booking.errorText") });
