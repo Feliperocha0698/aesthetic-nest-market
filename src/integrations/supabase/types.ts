@@ -17,6 +17,7 @@ export type Database = {
       booking_requests: {
         Row: {
           created_at: string
+          deposit_amount: number | null
           destination: string
           email: string
           id: string
@@ -26,6 +27,7 @@ export type Database = {
           notes: string | null
           origin: string
           passengers: number
+          payment_status: string
           phone: string
           quoted_amount: number | null
           return_date: string | null
@@ -33,12 +35,14 @@ export type Database = {
           round_trip: boolean
           service: string
           status: string
+          stripe_session_id: string | null
           trip_date: string
           trip_time: string
           updated_at: string
         }
         Insert: {
           created_at?: string
+          deposit_amount?: number | null
           destination: string
           email: string
           id?: string
@@ -48,6 +52,7 @@ export type Database = {
           notes?: string | null
           origin: string
           passengers?: number
+          payment_status?: string
           phone: string
           quoted_amount?: number | null
           return_date?: string | null
@@ -55,12 +60,14 @@ export type Database = {
           round_trip?: boolean
           service: string
           status?: string
+          stripe_session_id?: string | null
           trip_date: string
           trip_time: string
           updated_at?: string
         }
         Update: {
           created_at?: string
+          deposit_amount?: number | null
           destination?: string
           email?: string
           id?: string
@@ -70,6 +77,7 @@ export type Database = {
           notes?: string | null
           origin?: string
           passengers?: number
+          payment_status?: string
           phone?: string
           quoted_amount?: number | null
           return_date?: string | null
@@ -77,6 +85,7 @@ export type Database = {
           round_trip?: boolean
           service?: string
           status?: string
+          stripe_session_id?: string | null
           trip_date?: string
           trip_time?: string
           updated_at?: string
