@@ -62,6 +62,37 @@ const Booking = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState<FormState | null>(null);
+  const [bookingId, setBookingId] = useState<string | null>(null);
+  const [phase, setPhase] = useState<"form" | "pay" | "paid" | "pending">("form");
+  const [checking, setChecking] = useState(false);
+
+  const sessionId = params.get("session_id");
+
+  useEffect(() => {
+    if (!sessionId) return;
+    const raw = sessionStorage.getItem(STORAGE_KEY);
+    if (!raw) return;
+    const stored = JSON.parse(raw) as { bookingId: string; form: FormState };
+    setSubmitted(stored.form);
+    setBookingId(stored.bookingId);
+    setChecking(true);
+    supabase.functions
+      .invoke("booking-status", {
+        body: {
+          bookingId: stored.bookingId,
+          sessionId,
+          environment: getStripeEnvironment(),
+        },
+      })
+      .then(({ data }) => {
+        const paid = Boolean(data?.paid);
+        setPhase(paid ? "paid" : "pending");
+        if (paid) sessionStorage.removeItem(STORAGE_KEY);
+      })
+      .catch(() => setPhase("pending"))
+      .finally(() => setChecking(false));
+  }, [sessionId]);
+
 
   const schema = z.object({
     name: z.string().trim().min(3, t("validation.name")).max(120),
