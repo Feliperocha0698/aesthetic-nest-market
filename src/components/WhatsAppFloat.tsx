@@ -35,9 +35,9 @@ export const WhatsAppFloat = () => {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={t("common.talkWhatsApp")}
-      className="fixed bottom-6 right-6 z-50 flex items-center justify-center h-16 w-16 md:w-auto md:px-5 rounded-full bg-[#25D366] text-white shadow-lg hover:scale-105 transition-transform duration-300"
+      className="fixed bottom-6 right-6 z-50 flex items-center justify-center h-12 w-12 md:w-auto md:px-4 rounded-full bg-[#25D366] text-white shadow-lg hover:scale-105 transition-transform duration-300"
     >
-      <WhatsAppIcon className="w-12 h-12 shrink-0" />
+      <WhatsAppIcon className="w-7 h-7 shrink-0" />
       <span className="hidden md:inline text-sm font-semibold ml-2">WhatsApp</span>
     </a>
   );
