@@ -190,7 +190,7 @@ const Booking = () => {
 
       <PaymentTestModeBanner />
 
-      <section className="section">
+      <section className="section pb-24 md:pb-32">
         <div className="container-full grid gap-12 lg:grid-cols-[1.6fr_1fr] items-start">
           {submitted && phase === "pay" && bookingId ? (
             <Reveal className="bg-card border border-border rounded-lg p-6 md:p-10">
