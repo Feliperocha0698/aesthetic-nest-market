@@ -135,8 +135,9 @@ export const Footer = () => {
                 <a
                   href={`mailto:${CONTACT_EMAIL}`}
                   className="flex items-center gap-2 hover:text-ice transition-colors"
+                  aria-label={CONTACT_EMAIL}
                 >
-                  <Mail className="w-4 h-4 text-gold" />
+                  <Mail size={16} className="text-gold flex-shrink-0" />
                   {CONTACT_EMAIL}
                 </a>
               </li>
