@@ -137,16 +137,6 @@ export const Footer = () => {
             © {new Date().getFullYear()} BPC Recreativo. {t("footer.rights")}
           </p>
           <p className="text-xs text-ice/40">{SERVICE_AREA}</p>
-          <a
-            href="https://instagram.com/bpcrecreativo"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram @BPCRECREATIVO"
-            className="flex items-center gap-2 text-gold hover:text-ice transition-colors duration-300"
-          >
-            <Instagram size={24} />
-            <span className="text-xs tracking-[0.15em]">@BPCRECREATIVO</span>
-          </a>
         </div>
       </div>
 
