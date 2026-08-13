@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, MessageCircle, MapPin, Clock } from "lucide-react";
+import { Mail, MessageCircle, MapPin, Clock, Instagram } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import {
   CONTACT_EMAIL,
@@ -112,8 +112,18 @@ export const Footer = () => {
             © {new Date().getFullYear()} BPC Recreativo. {t("footer.rights")}
           </p>
           <p className="text-xs text-ice/40">{SERVICE_AREA}</p>
+          <a
+            href="https://instagram.com/bpcrecreativo"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            className="text-gold hover:text-ice transition-colors duration-300"
+          >
+            <Instagram size={24} />
+          </a>
         </div>
       </div>
+
     </footer>
   );
 };
