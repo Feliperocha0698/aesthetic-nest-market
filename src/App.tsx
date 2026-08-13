@@ -11,6 +11,9 @@ import Gallery from "./pages/Gallery";
 import About from "./pages/About";
 import Booking from "./pages/Booking";
 import Contact from "./pages/Contact";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
+import Cookies from "./pages/Cookies";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
