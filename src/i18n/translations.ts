@@ -113,11 +113,11 @@ export const translations = {
       pageSubtitle: "Um pouco da nossa frota, dos destinos e das viagens.",
     },
     about: {
-      pageTitle: "Sobre a BPC Recreativo",
+      pageTitle: "Sobre a BPC Receptivo",
       pageSubtitle: "Transporte com padrão executivo e cuidado com pessoas.",
       storyTitle: "Nossa história",
       storyText1:
-        "A BPC Recreativo nasceu para oferecer um transporte diferente na Bahia: pontual, confortável e conduzido por profissionais que entendem a importância de cada compromisso.",
+        "A BPC Receptivo nasceu para oferecer um transporte diferente na Bahia: pontual, confortável e conduzido por profissionais que entendem a importância de cada compromisso.",
       storyText2:
         "Atendemos empresas, famílias e turistas com uma operação enxuta e atenta, em que cada reserva é acompanhada de perto pela nossa equipe — do primeiro contato até a chegada ao destino.",
       missionTitle: "Missão",
@@ -335,11 +335,11 @@ export const translations = {
       pageSubtitle: "A glimpse of our fleet, destinations and journeys.",
     },
     about: {
-      pageTitle: "About BPC Recreativo",
+      pageTitle: "About BPC Receptivo",
       pageSubtitle: "Executive-standard transport with genuine care for people.",
       storyTitle: "Our story",
       storyText1:
-        "BPC Recreativo was created to offer a different kind of transport in Bahia: punctual, comfortable and driven by professionals who understand how much each commitment matters.",
+        "BPC Receptivo was created to offer a different kind of transport in Bahia: punctual, comfortable and driven by professionals who understand how much each commitment matters.",
       storyText2:
         "We serve companies, families and tourists with a focused operation in which every booking is followed closely by our team — from the first message to arrival.",
       missionTitle: "Mission",

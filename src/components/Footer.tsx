@@ -134,7 +134,7 @@ export const Footer = () => {
       <div className="border-t border-ice/10">
         <div className="container-full py-6 flex flex-col md:flex-row items-center justify-between gap-3">
           <p className="text-xs text-ice/40">
-            © {new Date().getFullYear()} BPC Recreativo. {t("footer.rights")}
+            © {new Date().getFullYear()} BPC Receptivo. {t("footer.rights")}
           </p>
           <p className="text-xs text-ice/40">{SERVICE_AREA}</p>
         </div>

@@ -21,8 +21,8 @@ export const WhatsAppFloat = () => {
   const { t, language } = useLanguage();
   const message =
     language === "pt"
-      ? "Olá! Gostaria de informações sobre uma viagem com a BPC Recreativo."
-      : "Hello! I'd like information about a trip with BPC Recreativo.";
+      ? "Olá! Gostaria de informações sobre uma viagem com a BPC Receptivo."
+      : "Hello! I'd like information about a trip with BPC Receptivo.";
 
   return (
     <a

@@ -25,8 +25,8 @@ const Index = () => {
           src={heroImage}
           alt={
             language === "pt"
-              ? "Veículo executivo da BPC Recreativo em estrada litorânea"
-              : "BPC Recreativo executive vehicle on a coastal road"
+              ? "Veículo executivo da BPC Receptivo em estrada litorânea"
+              : "BPC Receptivo executive vehicle on a coastal road"
           }
           className="absolute inset-0 w-full h-full object-cover"
         />
