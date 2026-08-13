@@ -93,7 +93,7 @@ export const Footer = () => {
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 hover:text-ice transition-colors"
                 >
-                <WhatsAppIcon className="w-6 h-6 text-gold" />
+                <WhatsAppIcon className="w-5 h-5 text-gold" />
                   {WHATSAPP_DISPLAY}
                 </a>
               </li>
