@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, MessageCircle, MapPin, Clock } from "lucide-react";
+import { Mail, MessageCircle, MapPin, Clock, Instagram } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import {
   CONTACT_EMAIL,
