@@ -20,14 +20,12 @@ export const services: Service[] = [
   {
     id: "transfer",
     slug: "transfer-executivo",
-    image:
-      "https://images.unsplash.com/photo-1549194898-61fdc3ac9d17?auto=format&fit=crop&w=1400&q=80",
+    image: serviceTransferImage,
   },
   {
     id: "salvador",
     slug: "viagens-salvador",
-    image:
-      "https://images.unsplash.com/photo-1591030618983-4b3f0f0d5b25?auto=format&fit=crop&w=1400&q=80",
+    image: serviceSalvadorImage,
   },
   {
     id: "coast",
