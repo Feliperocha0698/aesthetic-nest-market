@@ -88,6 +88,18 @@ export const Footer = () => {
             <ul className="space-y-3 text-sm text-ice/60">
               <li>
                 <a
+                  href="https://instagram.com/bpcrecreativo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram @BPCRECREATIVO"
+                  className="flex items-center gap-2 hover:text-ice transition-colors"
+                >
+                  <Instagram size={20} className="text-gold" />
+                  <span className="tracking-[0.15em]">@BPCRECREATIVO</span>
+                </a>
+              </li>
+              <li>
+                <a
                   href={whatsappLink()}
                   target="_blank"
                   rel="noopener noreferrer"
