@@ -3,8 +3,7 @@ import serviceSalvadorImage from "@/assets/service-salvador.jpg";
 
 export const WHATSAPP_NUMBER = "557191269417";
 export const WHATSAPP_DISPLAY = "+55 71 91269417";
-/* TODO: substituir pelo e-mail oficial de reservas */
-export const CONTACT_EMAIL = "reservas@bpcrecreativo.com.br";
+export const CONTACT_EMAIL = "bpcreceptivo@outlook.com";
 export const COMPANY_NAME = "BPC Receptivo";
 export const SERVICE_AREA = "Bahia, Brasil";
 
