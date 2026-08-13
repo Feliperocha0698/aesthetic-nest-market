@@ -45,7 +45,7 @@ export const Header = () => {
         <div className="flex items-center justify-between h-16 md:h-20 gap-4">
           <Link to="/" className="flex flex-col leading-none">
             <span className="font-serif text-xl md:text-2xl font-bold text-primary tracking-tight">
-              BPC <span className="text-secondary">Recreativo</span>
+              BPC <span className="text-secondary">Receptivo</span>
             </span>
             <span className="text-[9px] md:text-[10px] tracking-[0.3em] uppercase text-muted-foreground mt-1">
               Transporte executivo
