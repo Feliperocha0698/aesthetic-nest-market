@@ -209,6 +209,10 @@ export const translations = {
       navTitle: "Navegação",
       servicesTitle: "Serviços",
       contactTitle: "Contato",
+      legalTitle: "Legal",
+      privacy: "Política de Privacidade",
+      terms: "Termos de Uso",
+      cookies: "Cookies",
       rights: "Todos os direitos reservados.",
     },
     validation: {
@@ -431,6 +435,10 @@ export const translations = {
       navTitle: "Navigation",
       servicesTitle: "Services",
       contactTitle: "Contact",
+      legalTitle: "Legal",
+      privacy: "Privacy Policy",
+      terms: "Terms of Use",
+      cookies: "Cookies",
       rights: "All rights reserved.",
     },
     validation: {

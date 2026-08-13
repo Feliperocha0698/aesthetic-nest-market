@@ -28,10 +28,10 @@ export const Footer = () => {
   return (
     <footer className="bg-petrol-dark text-ice">
       <div className="container-full py-14 md:py-20">
-        <div className="grid gap-10 md:grid-cols-4">
+        <div className="grid gap-10 md:grid-cols-5">
           <div className="md:col-span-1">
             <p className="font-serif text-2xl font-bold">
-              BPC <span className="text-gold">Recreativo</span>
+              BPC <span className="text-gold">Receptivo</span>
             </p>
             <p className="mt-4 text-sm leading-relaxed text-ice/60 max-w-xs">
               {t("footer.tagline")}
@@ -75,6 +75,28 @@ export const Footer = () => {
                     className="text-sm text-ice/60 hover:text-ice transition-colors duration-300"
                   >
                     {t(`services.${s.id}.name`)}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-[11px] font-semibold tracking-[0.25em] uppercase text-gold mb-5">
+              {t("footer.legalTitle")}
+            </h4>
+            <ul className="space-y-3">
+              {[
+                { to: "/privacidade", key: "footer.privacy" },
+                { to: "/termos", key: "footer.terms" },
+                { to: "/cookies", key: "footer.cookies" },
+              ].map((l) => (
+                <li key={l.to}>
+                  <Link
+                    to={l.to}
+                    className="text-sm text-ice/60 hover:text-ice transition-colors duration-300"
+                  >
+                    {t(l.key)}
                   </Link>
                 </li>
               ))}
