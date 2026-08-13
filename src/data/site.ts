@@ -1,3 +1,6 @@
+import serviceTransferImage from "@/assets/service-transfer.jpg";
+import serviceSalvadorImage from "@/assets/service-salvador.jpg";
+
 export const WHATSAPP_NUMBER = "557191269417";
 export const WHATSAPP_DISPLAY = "+55 71 91269417";
 /* TODO: substituir pelo e-mail oficial de reservas */
