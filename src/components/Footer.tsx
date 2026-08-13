@@ -88,7 +88,7 @@ export const Footer = () => {
             <ul className="space-y-3 text-sm text-ice/60">
               <li>
                 <a
-                  href="https://instagram.com/bpcrecreativo"
+                  href="https://www.instagram.com/bpcrecreativo"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Instagram @BPCRECREATIVO"
