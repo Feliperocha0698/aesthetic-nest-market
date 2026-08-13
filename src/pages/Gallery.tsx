@@ -13,7 +13,7 @@ const Gallery = () => {
     <Layout>
       <section className="bg-primary text-ice py-16 md:py-24">
         <div className="container-full">
-          <p className="eyebrow">BPC Recreativo</p>
+          <p className="eyebrow">BPC Receptivo</p>
           <h1 className="mt-3 font-serif text-4xl md:text-5xl text-ice">{t("gallery.pageTitle")}</h1>
           <p className="mt-4 text-ice/70 max-w-xl leading-relaxed">{t("gallery.pageSubtitle")}</p>
         </div>

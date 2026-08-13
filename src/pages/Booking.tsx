@@ -112,7 +112,7 @@ const Booking = () => {
   const summary = (data: FormState) => {
     const serviceName = t(`services.${data.service}.name`);
     return [
-      `${t("booking.summaryTitle")} — BPC Recreativo`,
+      `${t("booking.summaryTitle")} — BPC Receptivo`,
       `${t("booking.name")}: ${data.name}`,
       `${t("booking.phone")}: ${data.phone}`,
       `${t("booking.email")}: ${data.email}`,
@@ -182,7 +182,7 @@ const Booking = () => {
     <Layout>
       <section className="bg-primary text-ice py-16 md:py-24">
         <div className="container-full">
-          <p className="eyebrow">BPC Recreativo</p>
+          <p className="eyebrow">BPC Receptivo</p>
           <h1 className="mt-3 font-serif text-4xl md:text-5xl text-ice">{t("booking.pageTitle")}</h1>
           <p className="mt-4 text-ice/70 max-w-xl leading-relaxed">{t("booking.pageSubtitle")}</p>
         </div>
